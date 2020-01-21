@@ -19,7 +19,7 @@ def main():
 
 
 def check_for_pixels(check_box, check_rgb, check_density=PIXEL_CHECK_DENSITY, tolerance=RGB_TOLERANCE):
-    pixel_data = _screengrab()
+    pixel_data = _screengrabGetRGB()
     for i in range(check_box[0], check_box[2], int(1//check_density)): # cols - x1 -> x2
         for j in range(check_box[1], check_box[3], int(1//check_density)): # rows - y1 -> y2
             if _pixel_rgb_match(pixel_data[i,j], check_rgb, tolerance):
@@ -37,7 +37,7 @@ def _pixel_rgb_match(pixel_rgb, target_rgb, tolerance):
     return euclidean_dist/max_distance <= tolerance
 
 
-def _screengrab(box=None):
+def _screengrabGetRGB(box=None):
     im = ImageGrab.grab(bbox=box)
     return im.load()
 

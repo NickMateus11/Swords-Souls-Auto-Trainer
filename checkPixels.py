@@ -1,4 +1,5 @@
 from PIL import ImageGrab
+from characterActions import keyPress
 
 
 RGB_TOLERANCE = 0.05
@@ -13,9 +14,10 @@ checkZones = {
 def main():
     rgb_to_check = (0,0,0)
     while True:
-        for z in checkZones:
-            if (check_for_pixels(checkZones[z], rgb_to_check, tolerance=0.1)):
+        for dir in checkZones:
+            if (check_for_pixels(checkZones[dir], rgb_to_check, tolerance=0.1)):
                 print("found!")
+                # keyPress(dir)
 
 
 def check_for_pixels(check_box, check_rgb, check_density=PIXEL_CHECK_DENSITY, tolerance=RGB_TOLERANCE):

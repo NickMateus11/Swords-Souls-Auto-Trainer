@@ -7,3 +7,5 @@ def keyPress(key, hold_time=0):
         sleep(hold_time)
     pyautogui.keyUp(key)
 
+# TODO: def mouseMoveTo
+
